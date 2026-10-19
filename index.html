@@ -1,20 +1,16 @@
 <!doctype html>
 <html lang="de">
 <head>
+  <!--
+    Webflow liefert die App ohne Schrägstrich am Ende aus (/static-test). Ohne <base>
+    würden relative Pfade wie ./style.css im Root landen (404).
+    WICHTIG: Muss zum Mount-Path in Webflow Cloud passen, mit / am Ende,
+    und vor allen anderen Verweisen stehen.
+  -->
   <meta charset="utf-8">
+  <base href="/static-test/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Static Test App</title>
-  <script>
-    // Webflow liefert die App ohne Schrägstrich am Ende aus (/static-test). Dann würden
-    // relative Pfade wie ./style.css im Root landen. Statt umzuleiten (Webflow leitet
-    // zurück → Endlosschleife) setzen wir eine <base>, damit sie unter /static-test/ landen.
-    (function () {
-      var p = location.pathname;
-      if (!p.endsWith("/") && !/\.[a-z0-9]+$/i.test(p)) {
-        document.write('<base href="' + p + '/">');
-      }
-    })();
-  </script>
   <link rel="icon" href="./bilder/logo.svg" type="image/svg+xml">
   <!-- eigene CSS-Datei, relativ eingebunden -->
   <link rel="stylesheet" href="./style.css">

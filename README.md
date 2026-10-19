@@ -15,7 +15,9 @@ daten.json
 bilder/        → berge.jpg, sonne.png, wald.webp, logo.svg
 ```
 
-Alle Verweise sind relativ (`./style.css`), damit sie unter jedem Mount-Path funktionieren.
+Alle Verweise sind relativ (`./style.css`). Weil Webflow die App ohne Schrägstrich am
+Ende ausliefert (`/static-test`), steht in `index.html` ein `<base href="/static-test/">`.
+**Ändert sich der Mount-Path, muss diese Zeile angepasst werden.**
 
 ## Deploy
 
