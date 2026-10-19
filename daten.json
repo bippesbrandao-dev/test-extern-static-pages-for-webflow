@@ -1,0 +1,7 @@
+{
+  "eintraege": [
+    "Diese Liste kommt aus daten.json",
+    "Geladen per fetch mit relativem Pfad",
+    "Kein Server, kein Build-Schritt"
+  ]
+}

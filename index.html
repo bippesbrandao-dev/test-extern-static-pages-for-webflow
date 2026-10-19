@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Static Test App</title>
+  <script>
+    // Ohne Schrägstrich am Ende (/static-test statt /static-test/) würden relative
+    // Pfade wie ./style.css im Root landen. Deshalb auf die Variante mit / umleiten.
+    if (!location.pathname.endsWith("/") && !/\.[a-z0-9]+$/i.test(location.pathname)) {
+      location.replace(location.pathname + "/" + location.search + location.hash);
+    }
+  </script>
+  <link rel="icon" href="./bilder/logo.svg" type="image/svg+xml">
+  <!-- eigene CSS-Datei, relativ eingebunden -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="kopf">
+    <img class="logo" src="./bilder/logo.svg" alt="Logo" width="48" height="48">
+    <div>
+      <h1>Static Test App</h1>
+      <p class="sub">Läuft auf Webflow Cloud ohne Build-Schritt</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="karte">
+      <h2>Selbstprüfung</h2>
+      <p class="hinweis" id="css-check">❌ CSS nicht geladen</p>
+      <ul class="checks" id="checks">
+        <li class="offen">JavaScript wird geprüft …</li>
+      </ul>
+      <p class="pfad">Aktueller Pfad: <code id="pfad">–</code></p>
+    </section>
+
+    <section class="karte">
+      <h2>Bilder in verschiedenen Formaten</h2>
+      <div class="galerie">
+        <figure><img src="./bilder/berge.jpg" alt="Verlauf JPG" data-check="JPG"><figcaption>JPG</figcaption></figure>
+        <figure><img src="./bilder/sonne.png" alt="Verlauf PNG" data-check="PNG"><figcaption>PNG</figcaption></figure>
+        <figure><img src="./bilder/wald.webp" alt="Verlauf WebP" data-check="WebP"><figcaption>WebP</figcaption></figure>
+        <figure class="svg-box"><img src="./bilder/logo.svg" alt="Logo SVG" data-check="SVG"><figcaption>SVG</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="karte">
+      <h2>Daten per fetch</h2>
+      <ul class="daten" id="daten"><li>Wird geladen …</li></ul>
+    </section>
+  </main>
+
+  <!-- eigene JS-Datei, relativ eingebunden -->
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+:root {
+  --bg: #f6f3ee;
+  --karte: #ffffff;
+  --text: #1f2a30;
+  --leise: #5f6b72;
+  --akzent: #264653;
+  --gut: #2a9d8f;
+  --schlecht: #e76f51;
+  --rand: #e4ded4;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.kopf {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 16px 8px;
+}
+.kopf h1 { margin: 0; font-size: 28px; letter-spacing: -0.02em; }
+.sub { margin: 0; color: var(--leise); }
+.logo { border-radius: 12px; }
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+}
+
+.karte {
+  background: var(--karte);
+  border: 1px solid var(--rand);
+  border-radius: 16px;
+  padding: 24px;
+}
+.karte h2 { margin: 0 0 12px; font-size: 18px; }
+
+/* Wird nur grün, wenn diese CSS-Datei geladen ist */
+.hinweis { margin: 0 0 8px; font-weight: 600; }
+#css-check { color: var(--gut); }
+#css-check::before { content: "✅ CSS geladen"; }
+#css-check { font-size: 0; }
+#css-check::before { font-size: 16px; }
+
+.checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.checks li::before { margin-right: 8px; }
+.checks .ok::before { content: "✅"; }
+.checks .fehler::before { content: "❌"; }
+.checks .fehler { color: var(--schlecht); }
+.checks .offen::before { content: "⏳"; }
+
+.pfad { margin: 12px 0 0; color: var(--leise); font-size: 14px; }
+code { background: var(--bg); padding: 2px 6px; border-radius: 6px; }
+
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+figure { margin: 0; }
+figure img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 8 / 5;
+  object-fit: cover;
+  border-radius: 10px;
+  background: var(--rand);
+}
+.svg-box img { object-fit: contain; padding: 24px; background: var(--bg); }
+figcaption { margin-top: 6px; font-size: 14px; color: var(--leise); }
+
+.daten { margin: 0; padding-left: 20px; }
