@@ -5,11 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Static Test App</title>
   <script>
-    // Ohne Schrägstrich am Ende (/static-test statt /static-test/) würden relative
-    // Pfade wie ./style.css im Root landen. Deshalb auf die Variante mit / umleiten.
-    if (!location.pathname.endsWith("/") && !/\.[a-z0-9]+$/i.test(location.pathname)) {
-      location.replace(location.pathname + "/" + location.search + location.hash);
-    }
+    // Webflow liefert die App ohne Schrägstrich am Ende aus (/static-test). Dann würden
+    // relative Pfade wie ./style.css im Root landen. Statt umzuleiten (Webflow leitet
+    // zurück → Endlosschleife) setzen wir eine <base>, damit sie unter /static-test/ landen.
+    (function () {
+      var p = location.pathname;
+      if (!p.endsWith("/") && !/\.[a-z0-9]+$/i.test(p)) {
+        document.write('<base href="' + p + '/">');
+      }
+    })();
   </script>
   <link rel="icon" href="./bilder/logo.svg" type="image/svg+xml">
   <!-- eigene CSS-Datei, relativ eingebunden -->
